@@ -4,7 +4,14 @@ import {
   faBell, 
   faCircle, 
   faSearch, 
-  faAlignJustify
+  faAlignJustify,
+  faAlignLeft,
+  faComment,
+  faHeart,
+  faHashtag,
+  faLock,
+  faPlus,
+  faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -12,5 +19,12 @@ library.add(
   faBell, 
   faCircle, 
   faSearch, 
-  faAlignJustify
+  faAlignJustify,
+  faAlignLeft,
+  faComment,
+  faHeart,
+  faHashtag,
+  faLock,
+  faPlus,
+  faPlusCircle
 );

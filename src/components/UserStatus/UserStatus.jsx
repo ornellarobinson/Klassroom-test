@@ -4,21 +4,21 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
 type Props = {
-  status: string,
+  online: boolean,
 }
 
 export default class UserStatus extends PureComponent<Props> {
   static defaultProps = {
-    status: 'offline'
+    online: false
   }
 
   render() {
-    const { status } = this.props;
+    const { online } = this.props;
 
     return (
       <div className={classNames('d-inline-flex user-status', {
-        'user-status__online': status === 'online',
-        'user-status__offline': status === 'offline',
+        'user-status__online': online,
+        'user-status__offline': !online,
       })} />
     )
   }
