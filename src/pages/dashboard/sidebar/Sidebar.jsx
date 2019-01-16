@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import UserStatus from 'components/UserStatus';
+
 export default class Sidebar extends PureComponent {
   render() {
     return (
@@ -12,8 +14,8 @@ export default class Sidebar extends PureComponent {
             <FontAwesomeIcon icon="bell" className="group__notif" size="lg" />            
           </div>
           <div className="settings__user">
-            <FontAwesomeIcon icon="circle" className="user__status mr-2" size="xs" />                        
-            <span className="user__name">damien</span>
+            <UserStatus status="online" />
+            <span className="user__name pl-2">damien</span>
           </div>
         </div>
         <div className="sidebar__nav p-3" />

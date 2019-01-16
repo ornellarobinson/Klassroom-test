@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Sidebar from './Sidebar'
 
-const fontAwesomeIcons = ['angle-down', 'bell', 'circle'];
+const fontAwesomeIcons = ['angle-down', 'bell'];
 
 describe('Sidebar component', () => {
 	const sidebarWrapper = shallow(<Sidebar />);
@@ -12,8 +12,8 @@ describe('Sidebar component', () => {
 		expect(sidebarWrapper.children().length).toEqual(2);
 	});
 
-	it('should call FontAwesomeIcon three times', () => {
-		expect(sidebarWrapper.find('FontAwesomeIcon').length).toEqual(3);
+	it('should call FontAwesomeIcon two times', () => {
+		expect(sidebarWrapper.find('FontAwesomeIcon').length).toEqual(2);
 	})
 
 	it('should render icons in the same order as fontAwesomeIcons array', () => {
