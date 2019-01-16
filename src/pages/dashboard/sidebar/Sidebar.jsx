@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import UserStatus from 'components/UserStatus';
+import SearchBar from 'components/SearchBar';
 
 export default class Sidebar extends PureComponent {
   render() {
@@ -18,7 +19,9 @@ export default class Sidebar extends PureComponent {
             <span className="user__name pl-2">damien</span>
           </div>
         </div>
-        <div className="sidebar__nav p-3" />
+        <div className="sidebar__nav px-4 mt-2">
+          <SearchBar icon="align-justify" placeHolder="Jump to..." classToApply="sidebar__search-bar"/>
+        </div>
       </div>
     )
   }
