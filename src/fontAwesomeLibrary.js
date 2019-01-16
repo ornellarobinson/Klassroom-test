@@ -1,4 +1,16 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAngleDown, faBell, faCircle } from '@fortawesome/free-solid-svg-icons'
+import {
+  faAngleDown, 
+  faBell, 
+  faCircle, 
+  faSearch, 
+  faAlignJustify
+} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faAngleDown, faBell, faCircle);
+library.add(
+  faAngleDown, 
+  faBell, 
+  faCircle, 
+  faSearch, 
+  faAlignJustify
+);
