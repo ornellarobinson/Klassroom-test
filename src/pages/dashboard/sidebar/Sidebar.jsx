@@ -31,6 +31,10 @@ class Sidebar extends PureComponent<Props> {
         </div>
         <div className="sidebar__nav mt-2">
           <SearchBar icon="align-justify" placeHolder="Jump to..." classToApply="sidebar__search-bar"/>
+          <div className="sidebar__item mt-3 px-4">
+            <FontAwesomeIcon icon="comment" size="sm" />
+            <span className="ml-2">All Threads</span>
+          </div>
           <SectionTitle name="Channels" />          
           {
             channels.map(channel =>
@@ -41,6 +45,10 @@ class Sidebar extends PureComponent<Props> {
             privateMessages.map(privateMessage =>
             <NavigationItem key={privateMessage.name} item={privateMessage} />)
           }
+          <div className="sidebar__item mt-4 px-4">
+            <FontAwesomeIcon icon="plus" size="sm" />
+            <span className="ml-2">Invite People</span>
+          </div>
           <SectionTitle name="App" />
         </div>
       </div>

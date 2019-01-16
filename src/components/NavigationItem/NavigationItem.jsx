@@ -27,7 +27,7 @@ export default class NavigationItem extends Component<Props> {
           :
           <FontAwesomeIcon icon={icon} size="xs" />
         }
-        <span className="nativation-item__name ml-3">{name}</span>
+        <span className="nativation-item__name ml-2">{name}</span>
       </NavLink>
     )
   }
