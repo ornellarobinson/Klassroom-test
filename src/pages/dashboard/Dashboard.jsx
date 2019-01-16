@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Sidebar from './sidebar'
+import Chat from './chat'
 
 export default class Dashboard extends PureComponent {
   render() {
@@ -10,12 +11,8 @@ export default class Dashboard extends PureComponent {
         <div className="container-fluid h-100">
           <div className="row h-100">
             <Sidebar />
-            <div className="klassroom-test">
-              {/* Slack Klassroom */}
-            </div>
-            <Route path='/channels' render={() => <div>Channel</div>} />
-            <Route path='/private' render={() => <div>Private</div>} />
-            <Route exact path='/' render={() => <div>Home</div>} />
+            <Route path='/channels' render={() => <Chat type="channel" />} />
+            <Route path='/private' render={() => <Chat type="private" />} />
           </div>
         </div>
       </Router>
