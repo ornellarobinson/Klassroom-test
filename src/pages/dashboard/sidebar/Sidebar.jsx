@@ -2,12 +2,13 @@
 
 import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withRouter } from "react-router";
 
 import UserStatus from 'components/UserStatus';
 import SearchBar from 'components/SearchBar';
+import SectionTitle from 'components/SectionTitle'
 import NavigationItem from 'components/NavigationItem';
 import { channels, privateMessages } from './Sidebar.util.js';
-import { withRouter } from "react-router";
 
 type Props = {
   location: *,
@@ -30,14 +31,17 @@ class Sidebar extends PureComponent<Props> {
         </div>
         <div className="sidebar__nav mt-2">
           <SearchBar icon="align-justify" placeHolder="Jump to..." classToApply="sidebar__search-bar"/>
+          <SectionTitle name="Channels" />          
           {
             channels.map(channel =>
-            <NavigationItem item={channel} />)
+            <NavigationItem key={channel.name} item={channel} />)
           }
+          <SectionTitle name="Direct Messages" />
           {
             privateMessages.map(privateMessage =>
-            <NavigationItem item={privateMessage} />)
+            <NavigationItem key={privateMessage.name} item={privateMessage} />)
           }
+          <SectionTitle name="App" />
         </div>
       </div>
     )
