@@ -11,7 +11,9 @@ import {
   faHashtag,
   faLock,
   faPlus,
-  faPlusCircle
+  faPlusCircle,
+  faSmile,
+  faAt
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -26,5 +28,7 @@ library.add(
   faHashtag,
   faLock,
   faPlus,
-  faPlusCircle
+  faPlusCircle,
+  faSmile,
+  faAt
 );
