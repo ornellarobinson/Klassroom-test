@@ -18,7 +18,7 @@ export default class DisplayMessage extends PureComponent<Props> {
 
     return (
       <div className="display-message d-flex align-items-center my-2">
-        <div className="display-message__user-avatar" />
+        <div className="user-avatar" />
         <div className="display-message__details ml-3">
           <div className="details__username-date">
             <span className="font-weight-bold">{from}</span>
