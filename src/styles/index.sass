@@ -17,11 +17,20 @@ body
 html, body, #root
   height: 100%
 
+.user-avatar
+  width: 35px
+  height: 35px
+  border-radius: 3px
+  background-image: url('./../ressources/slack-avatar.jpg')
+  background-size: contain
+  background-position: center
+
 /** COMPONENTS **/
 @import 'components/DisplayMessage/_DisplayMessage.sass'
 @import 'components/NavigationItem/_NavigationItem.sass'
 @import 'components/PostMessage/_PostMessage.sass'
 @import 'components/SearchBar/_SearchBar.sass'
+@import 'components/SearchResultItem/_SearchResultItem.sass'
 @import 'components/SectionTitle/_SectionTitle.sass'
 @import 'components/UserStatus/_UserStatus.sass'
 
