@@ -1,10 +1,19 @@
+// @flow
+
 import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import UserStatus from 'components/UserStatus';
 import SearchBar from 'components/SearchBar';
+import NavigationItem from 'components/NavigationItem';
+import { channels, privateMessages } from './Sidebar.util.js';
+import { withRouter } from "react-router";
 
-export default class Sidebar extends PureComponent {
+type Props = {
+  location: *,
+}
+
+class Sidebar extends PureComponent<Props> {
   render() {
     return (
       <div className="sidebar">
@@ -15,14 +24,24 @@ export default class Sidebar extends PureComponent {
             <FontAwesomeIcon icon="bell" className="group__notif" size="lg" />            
           </div>
           <div className="settings__user">
-            <UserStatus status="online" />
+            <UserStatus online={false} />
             <span className="user__name pl-2">damien</span>
           </div>
         </div>
-        <div className="sidebar__nav px-4 mt-2">
+        <div className="sidebar__nav mt-2">
           <SearchBar icon="align-justify" placeHolder="Jump to..." classToApply="sidebar__search-bar"/>
+          {
+            channels.map(channel =>
+            <NavigationItem item={channel} />)
+          }
+          {
+            privateMessages.map(privateMessage =>
+            <NavigationItem item={privateMessage} />)
+          }
         </div>
       </div>
     )
   }
 }
+
+export default withRouter(Sidebar);
