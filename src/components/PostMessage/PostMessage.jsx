@@ -7,6 +7,7 @@ type Props = {
   type: string,
   name: string
 }
+
 export default class PostMessage extends PureComponent<Props> {
   onEnterPress = (e) => {
     if(e.keyCode === 13 && e.shiftKey === false) {
