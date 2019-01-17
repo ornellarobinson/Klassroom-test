@@ -1,21 +1,24 @@
 import React, { PureComponent } from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 import Sidebar from './sidebar'
 import Chat from './chat'
 
-export default class Dashboard extends PureComponent {
+class Dashboard extends PureComponent {
   render() {
+    const { pathname } = this.props.location;
+    const channelName = pathname.split('/')[2];
+
     return (
-      <Router>
         <div className="container-fluid h-100">
           <div className="row h-100">
             <Sidebar />
-            <Route path='/channels' render={() => <Chat type="channel" />} />
-            <Route path='/private' render={() => <Chat type="private" />} />
+            <Route path='/channels' render={() => <Chat type="channel" name={channelName} />} />
+            <Route path='/private' render={() => <Chat type="private" name={channelName} />} />
           </div>
         </div>
-      </Router>
     )
   }
 }
+
+export default withRouter(Dashboard)
