@@ -44,7 +44,15 @@ export default class Chat extends PureComponent<Props> {
             <div className="chat__content-container d-flex">
               <div className="chat__content p-4 w-100">
                 {
-                  !_.isEmpty(messages) && moment(messages[0].at).format('LL')}
+                  !_.isEmpty(messages) &&
+                  <div className="content__chat-date">
+                    <div className='hr'>
+                      <span className='hr-title px-4 font-weight-bold'>
+                        {moment(messages[0].at).format('LL')}
+                      </span>
+                    </div>
+                  </div>
+                }
                 {
                   messages.map((message, index) =>
                     <DisplayMessage key={index} message={message}/> 
