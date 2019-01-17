@@ -14,7 +14,14 @@ import {
   faPlusCircle,
   faSmile,
   faAt,
-  faTimes
+  faTimes,
+  faStar,
+  faUser,
+  faThumbtack,
+  faPhone,
+  faInfoCircle,
+  faCog,
+  faEllipsisV
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -32,5 +39,12 @@ library.add(
   faPlusCircle,
   faSmile,
   faAt,
-  faTimes
+  faTimes,
+  faStar,
+  faUser,
+  faThumbtack,
+  faPhone,
+  faInfoCircle,
+  faCog,
+  faEllipsisV
 );

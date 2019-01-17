@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
+import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -38,15 +39,17 @@ class CreatePrivateChat extends PureComponent<Props> {
     const { username } = this.state;
     const newChatName = username.join();
 
-    postChannel('private',
-      {
-        path: `/private/${newChatName}`,
-        icon: null,
-        online: true,
-        name: newChatName
-      }
-    )
-    this.callPropsToCloseModal()
+    if (!_.isEmpty(newChatName)) {
+      postChannel('private',
+        {
+          path: `/private/${newChatName}`,
+          icon: null,
+          online: true,
+          name: newChatName
+        }
+      )
+      this.callPropsToCloseModal()
+    }
   }
 
   callPropsToCloseModal = () => {

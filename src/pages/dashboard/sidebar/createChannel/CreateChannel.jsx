@@ -79,8 +79,6 @@ class CreateChannel extends PureComponent {
             <input className="create-channel__name w-100 p-3 mb-4" type="text" placeholder="General" value={name} onChange={e => this.setState({ name: e.target.value })} />
             <div className="create-channel__toggle">
               <ToggleButton
-                inactiveLabel={''}
-                activeLabel={''}
                 inactiveLabel="Public"
                 activeLabel="Private"
                 thumbAnimateRange={[0, 64]}
