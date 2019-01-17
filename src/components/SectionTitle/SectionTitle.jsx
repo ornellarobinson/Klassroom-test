@@ -9,10 +9,13 @@ type Props = {
 
 export default class SectionTitle extends PureComponent<Props> {
   render() {
-    const { name } = this.props;
+    const { name, functionClickTrigger } = this.props;
 
     return (
-      <div className="section-title px-4 mt-4 d-flex justify-content-between align-items-center">
+      <div
+        className="section-title px-4 mt-4 d-flex justify-content-between align-items-center"
+        onClick={functionClickTrigger}
+      >
         <span>{name}</span>
         <FontAwesomeIcon icon="plus-circle" size="1x"/>
       </div>

@@ -38,7 +38,6 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  console.log('reducer messages')
   switch (action.type) {
     case 'GET_MESSAGES':
       return state
@@ -48,7 +47,6 @@ export default (state = initialState, action) => {
       newState[action.channelType].push(action.newMessage)
       return newState
     default:
-      console.log(3)
       return state;
   }
 }
