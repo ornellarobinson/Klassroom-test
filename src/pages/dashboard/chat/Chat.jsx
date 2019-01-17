@@ -30,7 +30,7 @@ export default class Chat extends PureComponent<Props> {
   }
 
   render() {
-    const { type, getMessages, name } = this.props;
+    const { type, name } = this.props;
     const { messages } = this.state;
     
     if (!this.state.messages) return null;

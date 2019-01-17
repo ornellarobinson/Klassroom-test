@@ -11,8 +11,6 @@ import Dashboard from './pages/dashboard';
 import { loadState, saveState } from './localStorage';
 import * as serviceWorker from './serviceWorker';
 
-import StateLoader from "./localStorage"
-
 const persistedState = loadState();
 
 let store = createStore(rootReducer, persistedState);
