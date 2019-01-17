@@ -61,15 +61,15 @@ class CreatePrivateChat extends PureComponent<Props> {
     const { username } = this.state;
 
     return (
-      <div className={classNames('create-private-chat', {
-        'create-private-chat--active': show
+      <div className={classNames('create-channel', {
+        'create-channel--active': show
       })}>
         <div className="d-flex flex-column w-100">
-          <div className="create-private-chat__close-icon d-flex">
+          <div className="create-channel__close-icon d-flex">
             <FontAwesomeIcon icon="times" size="2x" onClick={() => this.callPropsToCloseModal()} />
           </div>
-          <div className="create-private-chat__search mx-auto">
-            <div className="create-private-chat__title mb-4 font-weight-bold">
+          <div className="create-channel__search mx-auto">
+            <div className="create-channel__title mb-4 font-weight-bold">
               Direct Messages
             </div>
             <div className="d-flex">
