@@ -39,15 +39,23 @@ export default class Chat extends PureComponent<Props> {
     return (
       <div className="chat">
         <ChatTopbar />
-        <div className="chat__content p-4 d-flex flex-column justify-content-end">
-          {
-            !_.isEmpty(messages) && moment(messages[0].at).format('LL')}
-          {
-            messages.map((message, index) =>
-              <DisplayMessage key={index} message={message}/> 
-            )
-          }
-          <PostMessage type={type} name={name} />
+        <div className="chat__container d-flex flex-column justify-content-end">
+          <div className="chat__content-postmessage-wrapper">
+            <div className="chat__content-container d-flex">
+              <div className="chat__content p-4 w-100">
+                {
+                  !_.isEmpty(messages) && moment(messages[0].at).format('LL')}
+                {
+                  messages.map((message, index) =>
+                    <DisplayMessage key={index} message={message}/> 
+                  )
+                }
+              </div>
+            </div>
+            <div className="chat__post-message-wrapper pt-4">
+              <PostMessage type={type} name={name} />
+            </div>
+          </div>
         </div>
       </div>
     )
