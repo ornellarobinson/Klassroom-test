@@ -13,7 +13,8 @@ import {
   faPlus,
   faPlusCircle,
   faSmile,
-  faAt
+  faAt,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -30,5 +31,6 @@ library.add(
   faPlus,
   faPlusCircle,
   faSmile,
-  faAt
+  faAt,
+  faTimes
 );

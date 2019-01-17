@@ -5,6 +5,6 @@ export function getChannels() {
   return { type: GET_CHANNELS }
 }
 
-export function postChanel(newChannel) {
-  return { type: POST_CHANNEL, newChannel }
+export function postChannel(channelType, newChannel) {
+  return { type: POST_CHANNEL, channelType, newChannel }
 }
