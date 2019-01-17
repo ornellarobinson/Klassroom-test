@@ -11,7 +11,13 @@ const initialState = {
       icon: 'hashtag',
       online: false,
       name: 'general'
-    }, 
+    },
+    {
+      path: '/channels/sales_fr',
+      icon: 'lock',
+      online: false,
+      name: 'sales_fr'
+    },
   ],
   private: [
     {

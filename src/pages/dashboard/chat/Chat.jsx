@@ -5,7 +5,6 @@ import _ from 'lodash';
 
 import PostMessage from 'components/PostMessage';
 import DisplayMessage from 'components/DisplayMessage'
-import messages from './Chat.util'
 
 const moment = require('moment');
 

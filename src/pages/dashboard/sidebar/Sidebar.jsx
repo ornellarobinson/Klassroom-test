@@ -14,6 +14,12 @@ type Props = {
 }
 
 class Sidebar extends PureComponent<Props> {
+  componentDidMount() {
+    const { getChannels } = this.props;
+
+    getChannels();
+  }
+
   render() {
     const { channels } = this.props;
 

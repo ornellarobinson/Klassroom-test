@@ -11,4 +11,12 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Sidebar)
+const mapDispatchToProps = dispatch => {
+  return {
+    getChannels: () => {
+      dispatch(getChannels())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
