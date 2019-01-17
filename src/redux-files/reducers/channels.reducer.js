@@ -6,19 +6,22 @@ const initialState = {
       path: '/channels/recrutement',
       icon: 'hashtag',
       online: false,
-      name: 'recrutement'
+      name: 'recrutement',
+      users: '',
     },
     {
       path: '/channels/general',
       icon: 'hashtag',
       online: false,
-      name: 'general'
+      name: 'general',
+      users: '',
     },
     {
       path: '/channels/sales_fr',
       icon: 'lock',
       online: false,
-      name: 'sales_fr'
+      name: 'sales_fr',
+      users: '',
     },
   ],
   private: [
@@ -26,19 +29,19 @@ const initialState = {
       path: '/private/slackbot',
       icon: 'heart',
       online: true,
-      name: 'slackbot'
+      name: 'slackbot',
     }, 
     {
       path: '/private/ornella',
       icon: null,
       online: true,
-      name: 'ornella'
+      name: 'ornella',
     },
     {
       path: '/private/damien',
       icon: null,
       online: false,
-      name: 'damien'
+      name: 'damien',
     },
   ]
 }
