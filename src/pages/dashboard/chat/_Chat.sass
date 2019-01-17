@@ -1,5 +1,31 @@
 .chat
   width: calc(100% - #{$sidebar-width})
 
-  .chat__content
-    height: calc(100% - #{$topbar-height})
+  .chat__container
+    height: calc(100vh - (#{$topbar-height})
+
+    .chat__content-postmessage-wrapper
+
+      .chat__content-container
+        flex: 1
+        overflow: auto
+        max-height: calc(100vh - (#{$topbar-height} + #{$post-message-wrapper-height}))
+
+        .chat__content
+          div.hr
+            margin-top: 20px
+            margin-bottom: 20px
+            border: 0
+            border-top: 1px solid #eee
+            text-align: center
+            height: 0px
+            line-height: 0px
+            font-size: $font-size-small
+            
+          .hr-title
+            background-color: $white
+        
+          .content__chat-date
+
+      .chat__post-message-wrapper
+        height: $post-message-wrapper-height

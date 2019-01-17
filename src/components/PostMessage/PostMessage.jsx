@@ -42,7 +42,7 @@ export default class PostMessage extends PureComponent<Props> {
 
     return (
       <React.Fragment>
-        <div className="post-message d-flex justify-content-between">
+        <div className="post-message d-flex justify-content-between mx-4">
           <div className="post-message__add-media d-flex justify-content-center">
             <span>+</span>
           </div>
