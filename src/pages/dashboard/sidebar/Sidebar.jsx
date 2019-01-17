@@ -48,7 +48,9 @@ class Sidebar extends PureComponent<Props, State> {
             </div>
           </div>
           <div className="sidebar__nav mt-2">
-            <SearchBar icon="align-justify" placeHolder="Jump to..." classToApply="sidebar__search-bar"/>
+            <div className="mx-4">
+              <SearchBar icon="align-justify" placeHolder="Jump to..." classToApply="sidebar__search-bar"/>
+            </div>
             <div className="sidebar__item mt-3 px-4">
               <FontAwesomeIcon icon="comment" size="sm" />
               <span className="ml-2">All Threads</span>

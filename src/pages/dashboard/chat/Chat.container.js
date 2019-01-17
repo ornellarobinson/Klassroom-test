@@ -6,7 +6,7 @@ import Chat from './Chat'
 const mapStateToProps = state => {
   return {
     users: state.userProfile,
-    messages: state.messages
+    messages: state.messages,
   }
 }
 

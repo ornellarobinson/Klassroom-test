@@ -21,7 +21,7 @@ export default class SearchBar extends PureComponent<Props> {
     const { icon, placeHolder, classToApply } = this.props;
 
     return (
-      <div className={classNames('search-bar p-2 mx-4 d-flex align-items-center', classToApply)}>
+      <div className={classNames('search-bar p-2 d-flex align-items-center', classToApply)}>
         <FontAwesomeIcon icon={icon} className="mx-1" size="xs" />
         <input className="search-bar__input ml-2" type="text" placeholder={placeHolder} />
       </div>

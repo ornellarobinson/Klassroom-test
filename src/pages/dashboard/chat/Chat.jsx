@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import PostMessage from 'components/PostMessage';
 import DisplayMessage from 'components/DisplayMessage'
+import ChatTopbar from './chatTopbar';
 
 const moment = require('moment');
 
@@ -36,15 +37,18 @@ export default class Chat extends PureComponent<Props> {
     if (!this.state.messages) return null;
 
     return (
-      <div className="chat p-4">
-        {
-          !_.isEmpty(messages) && moment(messages[0].at).format('LL')}
-        {
-          messages.map((message, index) =>
-            <DisplayMessage key={index} message={message}/> 
-          )
-        }
-        <PostMessage type={type} name={name} />
+      <div className="chat">
+        <ChatTopbar />
+        <div className="chat__content p-4 d-flex flex-column justify-content-end">
+          {
+            !_.isEmpty(messages) && moment(messages[0].at).format('LL')}
+          {
+            messages.map((message, index) =>
+              <DisplayMessage key={index} message={message}/> 
+            )
+          }
+          <PostMessage type={type} name={name} />
+        </div>
       </div>
     )
   }
