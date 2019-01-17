@@ -8,7 +8,12 @@ import ToggleButton from 'react-toggle-button'
 
 import SearchResultItem from 'components/SearchResultItem/SearchResultItem';
 
-class CreateChannel extends PureComponent {
+type Props = {
+  show: boolean,
+  close: () => {},
+}
+
+class CreateChannel extends PureComponent<Props> {
   state = {
     title: '',
     privateChannel: false,

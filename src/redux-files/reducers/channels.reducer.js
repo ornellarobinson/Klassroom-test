@@ -46,7 +46,7 @@ const initialState = {
   ]
 }
 
-export default (state = initialState, action) => {
+export default (state = {}, action) => {
   switch(action.type) {
     case 'GET_CHANNELS':
       return state;

@@ -10,7 +10,7 @@ import SearchResultItem from 'components/SearchResultItem/SearchResultItem';
 
 type Props = {
   show: boolean,
-  close: boolean,
+  close: () => {},
   users: {
     username: string,
     name: string,
