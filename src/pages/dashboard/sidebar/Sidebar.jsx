@@ -8,14 +8,21 @@ import UserStatus from 'components/UserStatus';
 import SearchBar from 'components/SearchBar';
 import SectionTitle from 'components/SectionTitle'
 import NavigationItem from 'components/NavigationItem';
-import { channels, privateMessages } from './Sidebar.util.js';
 
 type Props = {
   location: *,
 }
 
 class Sidebar extends PureComponent<Props> {
+  componentDidMount() {
+    const { getChannels } = this.props;
+
+    getChannels();
+  }
+
   render() {
+    const { channels } = this.props;
+
     return (
       <div className="sidebar">
         <div className="sidebar__settings px-4 d-flex flex-column">
@@ -37,12 +44,12 @@ class Sidebar extends PureComponent<Props> {
           </div>
           <SectionTitle name="Channels" />          
           {
-            channels.map(channel =>
+            channels.channel.map(channel =>
             <NavigationItem key={channel.name} item={channel} />)
           }
           <SectionTitle name="Direct Messages" />
           {
-            privateMessages.map(privateMessage =>
+            channels.private.map(privateMessage =>
             <NavigationItem key={privateMessage.name} item={privateMessage} />)
           }
           <div className="sidebar__item mt-4 px-4">

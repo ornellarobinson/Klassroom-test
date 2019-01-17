@@ -15,7 +15,7 @@ type Props = {
   }
 }
 
-export default class NavigationItem extends Component<Props> {
+export default class NavigationItem extends Component<Props> {  
   render() {
     const { path, icon, online, name } = this.props.item;
 

@@ -9,33 +9,56 @@ type Props = {
 }
 
 export default class PostMessage extends PureComponent<Props> {
+  state = {
+    newMessage: ''
+  }
+
   onEnterPress = (e) => {
     if(e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
-      this.formPostMessage.submit();
+      this.onSubmit()
     }
   }
   
+  onSubmit = () => {
+    console.log('submitted')
+    const { postMessage, name, type } = this.props;
+    const { newMessage } = this.state;
+    
+    postMessage(type,
+      {
+        name: name,
+        from: 'damien',
+        at: Date.now(),
+        message: newMessage
+      },
+    )
+    this.setState({ newMessage: ''})
+  }
+
   render() {
     const { type, name } = this.props;
+    const { newMessage } = this.state;
 
     return (
-      <form ref={node => this.formPostMessage = node}>
+      <React.Fragment>
         <div className="post-message d-flex justify-content-between">
-          <div class="post-message__add-media d-flex justify-content-center">
+          <div className="post-message__add-media d-flex justify-content-center">
             <span>+</span>
           </div>
           <textarea
             className="post-message__textarea border-0 w-100 px-2"
             placeholder={`Message ${type === 'channel' ? '#' : ''}${name}`}
             onKeyDown={this.onEnterPress}
+            onChange={e => this.setState({ newMessage: e.target.value })}
+            value={newMessage}
           />
           <div className="post-message__add-mention-emoji d-flex align-items-center">
             <FontAwesomeIcon className="post-message__add-mention mx-2" icon="at" size="1x" />
             <FontAwesomeIcon className="post-message__add-emoji mx-2" icon="smile" size="1x" />
           </div>
         </ div>
-      </form>
+      </React.Fragment>
     )
   }
 }
