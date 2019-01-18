@@ -97,12 +97,9 @@
 				color: $sidebar-light-purple
 
 .sidebar--open
-	width: 100vw
-	padding-top: 4rem
+	@include media-breakpoint-down(xs)
+		width: 100vw
+		padding-top: 4rem
 
-	& > div
-		opacity: 1
-
-// .sidebar--open
-	// & + .chat
-		// display: none
+		& > div
+			opacity: 1
