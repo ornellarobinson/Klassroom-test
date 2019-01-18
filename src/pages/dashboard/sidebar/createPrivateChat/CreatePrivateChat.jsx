@@ -68,15 +68,15 @@ class CreatePrivateChat extends PureComponent<Props, State> {
           name: newChatName
         }
       )
-      this.callPropsToCloseModal()
+      this.callPropsToCloseModal('create')
     }
   }
 
-  callPropsToCloseModal = () => {
+  callPropsToCloseModal = (action) => {
     const { username } = this.state
     const { location, channels } = this.props
 
-    if (!_.isEmpty(username))
+    if (action === 'create')
       this.props.close(`/private/${username.join()}`)
     else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
       this.props.close('/')
@@ -95,7 +95,7 @@ class CreatePrivateChat extends PureComponent<Props, State> {
       })}>
         <div className="d-flex flex-column w-100">
           <div className="create-channel__close-icon d-flex">
-            <FontAwesomeIcon icon="times" size="2x" onClick={() => this.callPropsToCloseModal()} />
+            <FontAwesomeIcon icon="times" size="2x" onClick={() => this.callPropsToCloseModal('exit')} />
           </div>
           <div className="create-channel__search mx-auto">
             <div className="create-channel__title mb-4 font-weight-bold">
