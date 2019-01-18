@@ -76,8 +76,8 @@ const initialState = [
 export default (state = initialState, action) => {
   switch(action.type) {
     case 'GET_USER_PROFILE':
-      return state;
+      return state
     default:
-      return state;
+      return state
   }
 }

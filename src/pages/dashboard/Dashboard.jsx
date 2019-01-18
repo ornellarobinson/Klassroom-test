@@ -1,62 +1,75 @@
 // @flow
 
 import React, { PureComponent } from 'react'
-import { Route } from "react-router-dom";
+import { Route } from "react-router-dom"
 import _ from 'lodash'
 
 import Sidebar from './sidebar'
 import Chat from './chat'
 
-import CreatePrivateChat from './sidebar/createPrivateChat';
+import CreatePrivateChat from './sidebar/createPrivateChat'
 import CreateChannel from './sidebar/createChannel'
-import SplashScreen from './splashScreen';
+import SplashScreen from './splashScreen'
 
 type Props = {
-  location: *,
+  history: *,
+  location: {
+    pathname: string
+  },
+  channels: {
+    private: Array<{}>,
+    channel: Array<{}>
+  }
 }
 
-class Dashboard extends PureComponent<Props> {
+type State = {
+  newPrivateChat: boolean,
+  newChannel: boolean,
+  showSplashScreen: boolean
+}
+
+class Dashboard extends PureComponent<Props, State> {
   state = {
     newPrivateChat: false,
     newChannel: false,
     showSplashScreen: (_.isEmpty(this.props.channels.private) && _.isEmpty(this.props.channels.channel)),
   }
 
-  closeCreateModal = (stateToChange, newPath) => {
-    const { history, location } = this.props;
+  closeCreateModal = (stateToChange: string, newPath: string) => {
+    const { history, location } = this.props
 
     this.setState({ [stateToChange]: false, showSplashScreen: false})
     if (newPath !== location.pathname)
-      history.push(newPath);
+      history.push(newPath)
   }
 
-  openCreateModal = (stateToChange) => {
+  openCreateModal = (stateToChange: string) => {
     this.setState({ [stateToChange]: true })
   }
 
-  handleRedirection = (newPath, newTypeToCreate) => {
+  handleRedirection = (newPath: string, newTypeToCreate: string) => {
     if (newPath === '/')
       this.setState({ showSplashScreen: true })
     else
       this.closeCreateModal(newTypeToCreate, newPath)
   }
 
-  updateState = newType => {
+  updateState = (newType: string) => {
     const stateCopy = _.cloneDeep(this.state)
 
     Object.keys(stateCopy).forEach(function(key){
       if (key === newType)
-        stateCopy[key] = true;
+        stateCopy[key] = true
       else
-        stateCopy[key] = false;
-    });
+        stateCopy[key] = false
+    })
     this.setState(stateCopy)
   }
 
   render() {
-    const { newPrivateChat, newChannel, showSplashScreen } = this.state;
-    const { pathname } = this.props.location;
-    const channelName = pathname.split('/')[2];
+    const { newPrivateChat, newChannel, showSplashScreen } = this.state
+    const { pathname } = this.props.location
+    const channelName = pathname.split('/')[2]
 
     return (
         <div className="container-fluid h-100">

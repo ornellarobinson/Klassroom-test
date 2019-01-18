@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react'
 
-const moment = require('moment');
+const moment = require('moment')
 
 type Props = {
   message: {
@@ -14,7 +14,7 @@ type Props = {
 
 export default class DisplayMessage extends PureComponent<Props> {
   render() {
-    const { from, at, message } = this.props.message;
+    const { from, at, message } = this.props.message
 
     return (
       <div className="display-message d-flex align-items-center my-2">

@@ -49,4 +49,4 @@ library.add(
   faCog,
   faEllipsisV,
   faAngleRight
-);
+)

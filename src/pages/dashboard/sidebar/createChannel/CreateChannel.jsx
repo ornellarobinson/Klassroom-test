@@ -4,17 +4,45 @@ import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ToggleButton from 'react-toggle-button'
 
-import SearchResultItem from 'components/SearchResultItem/SearchResultItem';
+//$FlowFixMe
+import SearchResultItem from 'components/SearchResultItem/SearchResultItem'
 
-type Props = {
-  show: boolean,
-  close: () => {},
+type ChannelArray = {
+  path: string,
+  icon: string,
+  online: boolean,
+  name: string,
 }
 
-class CreateChannel extends PureComponent<Props> {
+type Props = {
+  postChannel: (string, {}) => {},
+  location: {
+    pathname: string,
+  },
+  users: {
+    username: string,
+    name: string,
+    online: boolean
+  },
+  show: boolean,
+  close: string => {},
+  channels: {
+    channel: Array<ChannelArray>,
+    private: Array<ChannelArray>
+  },
+}
+
+type State = {
+  title: string,
+  privateChannel: boolean,
+  username: Array<string>,
+  name: string
+}
+
+class CreateChannel extends PureComponent<Props, State> {
   state = {
     title: '',
     privateChannel: false,
@@ -23,7 +51,7 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   selectResultItem = userInfos => {
-    const { username } = this.state;
+    const { username } = this.state
 
     if (!username.includes(userInfos.username)) {
       const newUsername = [...username]
@@ -40,9 +68,9 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   submitNewChannel = () => {
-    const { postChannel } = this.props;
-    const { username, name, privateChannel } = this.state;
-    const newChatName = username.join();
+    const { postChannel } = this.props
+    const { username, name, privateChannel } = this.state
+    const newChatName = username.join()
 
     if (name && 0 !== name.length && name.trim() !== '') {
       postChannel('channel',
@@ -59,21 +87,21 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   callPropsToCloseModal = () => {
-    const { name } = this.state;
-    const { pathname, channels } = this.props;
+    const { name } = this.state
+    const { location, channels } = this.props
 
     if (name !== '' )
       this.props.close(`/channels/${name}`)
     else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
       this.props.close('/')
     else
-      this.props.close(pathname)
+      this.props.close(location.pathname)
     this.setState({ username: [], title: '', privateChannel: false, name: '' })
   }
 
   render() {
-    const { show, users } = this.props;
-    const { username, privateChannel, name } = this.state;
+    const { show, users } = this.props
+    const { username, privateChannel, name } = this.state
     
     return (
       <div className={classNames('create-channel', {
@@ -109,6 +137,7 @@ class CreateChannel extends PureComponent<Props> {
                 <div className="d-flex">
                   <div className="create-channel__users-selected p-2 w-100">
                   {
+                    //$FlowFixMe
                     username.map(username => 
                       <span key={username} className="badge badge-secondary p-3 m-1">{username}</span>)
                   }
@@ -116,6 +145,7 @@ class CreateChannel extends PureComponent<Props> {
                 </div>
                 <div className="create-private-chat__user-list">
                   {
+                    //$FlowFixMe
                     users.map(userInfos =>
                       <SearchResultItem key={userInfos.id} userInfos={userInfos} selectItem={() => this.selectResultItem(userInfos)}/>
                     )
@@ -134,4 +164,4 @@ class CreateChannel extends PureComponent<Props> {
   }
 }
 
-export default withRouter(CreateChannel);
+export default withRouter(CreateChannel)

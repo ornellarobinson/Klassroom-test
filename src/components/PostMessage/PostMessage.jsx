@@ -1,28 +1,40 @@
 // @flow
 
 import React, { PureComponent } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
   type: string,
-  name: string
+  name: string,
+  postMessage: (string, {
+      name: string,
+      from: string,
+      at: number,
+      message: string
+  }) => {}
 }
 
-export default class PostMessage extends PureComponent<Props> {
+type State = {
+  newMessage: string
+}
+
+export default class PostMessage extends PureComponent<Props, State> {
   state = {
     newMessage: ''
   }
 
-  onEnterPress = (e) => {
+//$FlowFixMe
+  onEnterPress = e => {
+    //$FlowFixMe
     if(e.keyCode === 13 && e.shiftKey === false) {
-      e.preventDefault();
+      e.preventDefault()
       this.onSubmit()
     }
   }
   
   onSubmit = () => {
-    const { postMessage, name, type } = this.props;
-    const { newMessage } = this.state;
+    const { postMessage, name, type } = this.props
+    const { newMessage } = this.state
     
     postMessage(type,
       {
@@ -36,8 +48,8 @@ export default class PostMessage extends PureComponent<Props> {
   }
 
   render() {
-    const { type, name } = this.props;
-    const { newMessage } = this.state;
+    const { type, name } = this.props
+    const { newMessage } = this.state
 
     return (
       <React.Fragment>

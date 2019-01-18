@@ -1,7 +1,7 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import classNames from 'classnames';
+import React, { PureComponent } from 'react'
+import classNames from 'classnames'
 
 type Props = {
   online: boolean,
@@ -13,7 +13,7 @@ export default class UserStatus extends PureComponent<Props> {
   }
 
   render() {
-    const { online } = this.props;
+    const { online } = this.props
 
     return (
       <div className={classNames('d-inline-flex user-status', {

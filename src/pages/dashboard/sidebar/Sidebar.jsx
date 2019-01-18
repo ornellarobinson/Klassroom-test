@@ -2,13 +2,17 @@
 
 import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { withRouter } from "react-router";
-import classNames from 'classnames';
+import { withRouter } from "react-router"
+import classNames from 'classnames'
 
-import UserStatus from 'components/UserStatus';
-import SearchBar from 'components/SearchBar';
+//$FlowFixMe
+import UserStatus from 'components/UserStatus'
+//$FlowFixMe
+import SearchBar from 'components/SearchBar'
+//$FlowFixMe
 import SectionTitle from 'components/SectionTitle'
-import NavigationItem from 'components/NavigationItem';
+//$FlowFixMe
+import NavigationItem from 'components/NavigationItem'
 
 type ChannelArray = {
   path: string,
@@ -18,8 +22,7 @@ type ChannelArray = {
 }
 
 type Props = {
-  location: *,
-  updateDashboardState: () => {},
+  updateDashboardState: string => {},
   channels: {
     channel: Array<ChannelArray>,
     private: Array<ChannelArray>
@@ -27,7 +30,7 @@ type Props = {
 }
 
 type State = {
-  newChat: boolean,
+  open: boolean,
 }
 
 class Sidebar extends PureComponent<Props, State> {
@@ -36,8 +39,8 @@ class Sidebar extends PureComponent<Props, State> {
   }
   
   render() {
-    const { channels, updateDashboardState } = this.props;
-    const { open } = this.state;
+    const { channels, updateDashboardState } = this.props
+    const { open } = this.state
     
     return (
       <React.Fragment>
@@ -97,4 +100,4 @@ class Sidebar extends PureComponent<Props, State> {
   }
 }
 
-export default withRouter(Sidebar);
+export default withRouter(Sidebar)

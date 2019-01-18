@@ -1,26 +1,35 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import _ from 'lodash';
+import React, { PureComponent } from 'react'
+import _ from 'lodash'
 
-import PostMessage from 'components/PostMessage';
+//$FlowFixMe
+import PostMessage from 'components/PostMessage'
+//$FlowFixMe
 import DisplayMessage from 'components/DisplayMessage'
-import ChatTopbar from './chatTopbar';
+//$FlowFixMe
+import ChatTopbar from './chatTopbar'
 
-const moment = require('moment');
+const moment = require('moment')
 
 type Props = {
-  type: string
+  type: string,
+  name: string,
+  messages: {}
 }
 
-export default class Chat extends PureComponent<Props> {
+type State = {
+  messages: Array<{}>
+}
+
+export default class Chat extends PureComponent<Props, State> {
   state = {
     messages: this.props.messages[this.props.type].filter(
       message => message.name === this.props.name
     ),
   }
   
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (prevProps !== this.props) {
       this.setState({
         messages:  this.props.messages[this.props.type].filter(
@@ -31,10 +40,10 @@ export default class Chat extends PureComponent<Props> {
   }
 
   render() {
-    const { type, name } = this.props;
-    const { messages } = this.state;
+    const { type, name } = this.props
+    const { messages } = this.state
     
-    if (!this.state.messages) return null;
+    if (!this.state.messages) return null
 
     return (
       <div className="chat">
@@ -48,7 +57,10 @@ export default class Chat extends PureComponent<Props> {
                   <div className="content__chat-date">
                     <div className='hr'>
                       <span className='hr-title px-4 font-weight-bold'>
-                        {moment(messages[0].at).format('LL')}
+                        {
+                          //$FlowFixMe
+                          moment(messages[0].at).format('LL')
+                        }
                       </span>
                     </div>
                   </div>
