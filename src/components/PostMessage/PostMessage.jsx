@@ -36,14 +36,16 @@ export default class PostMessage extends PureComponent<Props, State> {
     const { postMessage, name, type } = this.props
     const { newMessage } = this.state
     
-    postMessage(type,
-      {
-        name: name,
-        from: 'damien',
-        at: Date.now(),
-        message: newMessage
-      },
-    )
+    if (newMessage.trim() !== '') {
+      postMessage(type,
+        {
+          name: name,
+          from: 'damien',
+          at: Date.now(),
+          message: newMessage
+        },
+      )
+    }
     this.setState({ newMessage: ''})
   }
 
