@@ -13,7 +13,7 @@ type Props = {
 
 export default class SplashScreen extends PureComponent<Props> {
   render() {
-    const { show, onButtonClicked } = this.props;
+    const { show, onButtonClicked } = this.props
     
     return (
       <div className={classNames('splash-screen text-dark', {

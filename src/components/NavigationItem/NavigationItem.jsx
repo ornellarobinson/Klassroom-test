@@ -17,7 +17,7 @@ type Props = {
 
 export default class NavigationItem extends Component<Props> {  
   render() {
-    const { path, icon, online, name } = this.props.item;
+    const { path, icon, online, name } = this.props.item
 
     return (
       <NavLink to={path} activeClassName="navigation-item--active" className="navigation-item px-4 d-flex align-items-center">

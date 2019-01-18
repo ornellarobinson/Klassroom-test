@@ -4,9 +4,9 @@ import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import SearchResultItem from 'components/SearchResultItem/SearchResultItem';
+import SearchResultItem from 'components/SearchResultItem/SearchResultItem'
 
 type Props = {
   show: boolean,
@@ -24,7 +24,7 @@ class CreatePrivateChat extends PureComponent<Props> {
   }
 
   selectResultItem = userInfos => {
-    const { username } = this.state;
+    const { username } = this.state
 
     if (!username.includes(userInfos.username)) {
       const newUsername = [...username]
@@ -35,9 +35,9 @@ class CreatePrivateChat extends PureComponent<Props> {
   }
   
   submitNewPrivateChat = () => {
-    const { postChannel } = this.props;
-    const { username } = this.state;
-    const newChatName = username.join();
+    const { postChannel } = this.props
+    const { username } = this.state
+    const newChatName = username.join()
 
     if (!_.isEmpty(newChatName)) {
       postChannel('private',
@@ -53,11 +53,11 @@ class CreatePrivateChat extends PureComponent<Props> {
   }
 
   callPropsToCloseModal = () => {
-    const { username } = this.state;
-    const { pathname, channels } = this.props;
+    const { username } = this.state
+    const { pathname, channels } = this.props
 
     if (!_.isEmpty(username))
-      this.props.close(`/private/${username.join()}`);
+      this.props.close(`/private/${username.join()}`)
     else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
       this.props.close('/')
     else
@@ -66,8 +66,8 @@ class CreatePrivateChat extends PureComponent<Props> {
   }
 
   render() {
-    const { show, users } = this.props;
-    const { username } = this.state;
+    const { show, users } = this.props
+    const { username } = this.state
 
     return (
       <div className={classNames('create-channel', {

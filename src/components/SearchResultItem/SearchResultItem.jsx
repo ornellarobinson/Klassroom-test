@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react'
 
-import UserStatus from 'components/UserStatus/UserStatus';
+import UserStatus from 'components/UserStatus/UserStatus'
 
 type Props = {
   userInfos: {
@@ -14,8 +14,8 @@ type Props = {
 
 export default class SearchResultItem extends PureComponent<Props> {
   render() {
-    const { username, name, online } = this.props.userInfos;
-    const { selectItem } = this.props;
+    const { username, name, online } = this.props.userInfos
+    const { selectItem } = this.props
     
     return (
       <div className="search-result-item border-top d-flex align-items-center p-3"

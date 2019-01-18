@@ -1,1 +1,1 @@
-export { default } from './DisplayMessage';
+export { default } from './DisplayMessage'

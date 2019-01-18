@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'lodash'
 
 const initialState = {
   channel: [],
@@ -47,11 +47,11 @@ export default (state = initialState, action) => {
     case 'GET_MESSAGES':
       return state
     case 'POST_MESSAGE':
-      const newState = _.cloneDeep(state);
+      const newState = _.cloneDeep(state)
 
       newState[action.channelType].push(action.newMessage)
       return newState
     default:
-      return state;
+      return state
   }
 }

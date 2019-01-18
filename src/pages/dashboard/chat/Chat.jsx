@@ -1,13 +1,13 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import _ from 'lodash';
+import React, { PureComponent } from 'react'
+import _ from 'lodash'
 
-import PostMessage from 'components/PostMessage';
+import PostMessage from 'components/PostMessage'
 import DisplayMessage from 'components/DisplayMessage'
-import ChatTopbar from './chatTopbar';
+import ChatTopbar from './chatTopbar'
 
-const moment = require('moment');
+const moment = require('moment')
 
 type Props = {
   type: string
@@ -31,10 +31,10 @@ export default class Chat extends PureComponent<Props> {
   }
 
   render() {
-    const { type, name } = this.props;
-    const { messages } = this.state;
+    const { type, name } = this.props
+    const { messages } = this.state
     
-    if (!this.state.messages) return null;
+    if (!this.state.messages) return null
 
     return (
       <div className="chat">

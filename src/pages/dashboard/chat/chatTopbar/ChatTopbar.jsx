@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import SearchBar from 'components/SearchBar'
 type Props = {
@@ -11,9 +11,9 @@ type Props = {
 
 class ChatTopbar extends PureComponent<Props> {
   render() {
-    const { pathname } = this.props.location;
+    const { pathname } = this.props.location
     const channelType = pathname.split('/')[1]
-    const channelName = pathname.split('/')[2];
+    const channelName = pathname.split('/')[2]
 
     return (
       <div className="chat-topbar w-100">

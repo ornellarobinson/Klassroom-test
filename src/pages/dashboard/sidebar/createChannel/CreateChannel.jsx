@@ -4,10 +4,10 @@ import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ToggleButton from 'react-toggle-button'
 
-import SearchResultItem from 'components/SearchResultItem/SearchResultItem';
+import SearchResultItem from 'components/SearchResultItem/SearchResultItem'
 
 type Props = {
   show: boolean,
@@ -23,7 +23,7 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   selectResultItem = userInfos => {
-    const { username } = this.state;
+    const { username } = this.state
 
     if (!username.includes(userInfos.username)) {
       const newUsername = [...username]
@@ -40,9 +40,9 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   submitNewChannel = () => {
-    const { postChannel } = this.props;
-    const { username, name, privateChannel } = this.state;
-    const newChatName = username.join();
+    const { postChannel } = this.props
+    const { username, name, privateChannel } = this.state
+    const newChatName = username.join()
 
     if (name && 0 !== name.length && name.trim() !== '') {
       postChannel('channel',
@@ -59,8 +59,8 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   callPropsToCloseModal = () => {
-    const { name } = this.state;
-    const { pathname, channels } = this.props;
+    const { name } = this.state
+    const { pathname, channels } = this.props
 
     if (name !== '' )
       this.props.close(`/channels/${name}`)
@@ -72,8 +72,8 @@ class CreateChannel extends PureComponent<Props> {
   }
 
   render() {
-    const { show, users } = this.props;
-    const { username, privateChannel, name } = this.state;
+    const { show, users } = this.props
+    const { username, privateChannel, name } = this.state
     
     return (
       <div className={classNames('create-channel', {
@@ -134,4 +134,4 @@ class CreateChannel extends PureComponent<Props> {
   }
 }
 
-export default withRouter(CreateChannel);
+export default withRouter(CreateChannel)

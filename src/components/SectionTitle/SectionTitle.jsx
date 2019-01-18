@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
   name: string,
@@ -9,7 +9,7 @@ type Props = {
 
 export default class SectionTitle extends PureComponent<Props> {
   render() {
-    const { name, functionClickTrigger } = this.props;
+    const { name, functionClickTrigger } = this.props
 
     return (
       <div
