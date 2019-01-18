@@ -12,10 +12,18 @@
     font-size: $font-size-small
 
   .topbar__right
+    max-width: 30%
+
     @include media-breakpoint-down(xs)
+      min-width: 90%
       display: flex
       flex-direction: row
       justify-content: space-between
+
+    .right__channel-name
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
 
   .topbar__left
     display: flex

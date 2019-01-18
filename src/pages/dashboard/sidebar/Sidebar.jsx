@@ -52,7 +52,6 @@ class Sidebar extends PureComponent<Props, State> {
               }
             )}
             size='2x'
-            color="white"
             onClick={() => this.setState({ open: !open })}
           />
           <div className="sidebar__settings px-4 d-flex flex-column">
@@ -62,7 +61,7 @@ class Sidebar extends PureComponent<Props, State> {
               <FontAwesomeIcon icon="bell" className="group__notif" size="lg" />            
             </div>
             <div className="settings__user">
-              <UserStatus online={false} />
+              <UserStatus online={true} />
               <span className="user__name pl-2">damien</span>
             </div>
           </div>

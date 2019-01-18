@@ -18,13 +18,15 @@
 
 	.sidebar__arrow-icon
 		display: none
+		color: $sidebar-light-purple
 		transition: transform 1s
-
+		cursor: pointer
 		@include media-breakpoint-down(xs)
 			display: inherit
-
+		&:hover
+			color: $white
+			
 	.sidebar__arrow-icon--close
-		cursor: pointer
 		margin-top: 10px
 		margin-left: auto
 		margin-right: auto
