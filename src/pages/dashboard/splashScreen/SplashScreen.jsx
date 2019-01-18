@@ -8,13 +8,13 @@ import klassroomLogo from 'ressources/klassroom-logo.svg'
 
 type Props = {
   show: boolean,
-  close: () => {},
+  onButtonClicked: () => {},
 }
 
 export default class SplashScreen extends PureComponent<Props> {
   render() {
-    const { show, close } = this.props;
-    console.log('show', show)
+    const { show, onButtonClicked } = this.props;
+    
     return (
       <div className={classNames('splash-screen text-dark', {
         'splash-screen--active': show
@@ -23,8 +23,8 @@ export default class SplashScreen extends PureComponent<Props> {
           <img className="splash-screen__slack-logo" src={slackLogo} alt="slack-logo" />
           <img className="splash-screen__klassroom-logo" src={klassroomLogo} alt="klassroom-logo" />          
           <div className="splash-screen__button my-4 d-flex justify-content-end">
-            <button type="button" className="btn btn-outline-dark p-3" onClick={() => {}}>Create Channel</button>
-            <button type="button" className="btn btn-outline-primary ml-2 p-3" onClick={() => {}}>Create Private Chat</button>
+            <button type="button" className="btn btn-outline-dark p-3" onClick={() => onButtonClicked('newChannel')}>Create Channel</button>
+            <button type="button" className="btn btn-outline-primary ml-2 p-3" onClick={() => onButtonClicked('newPrivateChat')}>Create Private Chat</button>
           </div>
         </div>
       </div>

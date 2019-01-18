@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react'
-import { Route, withRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import _ from 'lodash'
 
 import Sidebar from './sidebar'
@@ -19,13 +19,13 @@ class Dashboard extends PureComponent<Props> {
   state = {
     newPrivateChat: false,
     newChannel: false,
-    showSplashScreen: _.isEmpty(this.props.channels),
+    showSplashScreen: (_.isEmpty(this.props.channels.private) && _.isEmpty(this.props.channels.channel)),
   }
 
   closeCreateModal = (stateToChange, newPath) => {
     const { history, location } = this.props;
 
-    this.setState({ [stateToChange]: false})
+    this.setState({ [stateToChange]: false, showSplashScreen: false})
     if (newPath !== location.pathname)
       history.push(newPath);
   }
@@ -34,11 +34,29 @@ class Dashboard extends PureComponent<Props> {
     this.setState({ [stateToChange]: true })
   }
 
+  handleRedirection = (newPath, newTypeToCreate) => {
+    if (newPath === '/')
+      this.setState({ showSplashScreen: true })
+    else
+      this.closeCreateModal(newTypeToCreate, newPath)
+  }
+
+  updateState = newType => {
+    const stateCopy = _.cloneDeep(this.state)
+
+    Object.keys(stateCopy).forEach(function(key){
+      if (key === newType)
+        stateCopy[key] = true;
+      else
+        stateCopy[key] = false;
+    });
+    this.setState(stateCopy)
+  }
+
   render() {
     const { newPrivateChat, newChannel, showSplashScreen } = this.state;
     const { pathname } = this.props.location;
     const channelName = pathname.split('/')[2];
-    console.log('showSplashScreen value:', this.state.showSplashScreen);
 
     return (
         <div className="container-fluid h-100">
@@ -46,14 +64,18 @@ class Dashboard extends PureComponent<Props> {
             {
               !showSplashScreen ?
               <React.Fragment>
+                <Sidebar {...this.props} updateDashboardState={stateToChange => this.openCreateModal(stateToChange)} />
                 <Route path='/channels' render={() => <Chat type="channel" name={channelName} />} />
                 <Route path='/private' render={() => <Chat type="private" name={channelName} />} />
-                <Sidebar {...this.props} updateDashboardState={stateToChange => this.openCreateModal(stateToChange)} />
-                <CreatePrivateChat show={newPrivateChat} close={newPath => this.closeCreateModal('newPrivateChat', newPath)} />
-                <CreateChannel show={newChannel} close={newPath => this.closeCreateModal('newChannel', newPath)} />
+                <CreatePrivateChat show={newPrivateChat} close={newPath => this.handleRedirection(newPath, 'newPrivateChat')}
+                />
+                <CreateChannel show={newChannel} close={newPath => this.handleRedirection(newPath, 'newChannel')} />
               </React.Fragment>
                 :
-              <SplashScreen show={showSplashScreen} close={() => console.log('close function has been called')} />
+              <SplashScreen
+                show={showSplashScreen}
+                onButtonClicked={newType => this.updateState(newType)}
+              />
             }
           </div>
         </div>
@@ -61,4 +83,4 @@ class Dashboard extends PureComponent<Props> {
   }
 }
 
-export default withRouter(Dashboard)
+export default Dashboard

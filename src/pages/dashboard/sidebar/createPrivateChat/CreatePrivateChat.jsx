@@ -54,8 +54,14 @@ class CreatePrivateChat extends PureComponent<Props> {
 
   callPropsToCloseModal = () => {
     const { username } = this.state;
+    const { pathname, channels } = this.props;
 
-    this.props.close(`/private/${username.join()}`);
+    if (!_.isEmpty(username))
+      this.props.close(`/private/${username.join()}`);
+    else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
+      this.props.close('/')
+    else
+      this.props.close(pathname)
     this.setState({ username: [] })
   }
 

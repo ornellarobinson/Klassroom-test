@@ -57,11 +57,13 @@ class Sidebar extends PureComponent<Props, State> {
             </div>
             <SectionTitle name="Channels" functionClickTrigger={() => updateDashboardState('newChannel')} />          
             {
+              channels.channel &&
               channels.channel.map(channel =>
               <NavigationItem key={channel.name} item={channel} />)
             }
             <SectionTitle name="Direct Messages" functionClickTrigger={() => updateDashboardState('newPrivateChat')} />
             {
+              channels.private &&
               channels.private.map(privateMessage =>
               <NavigationItem key={privateMessage.name} item={privateMessage} />)
             }
