@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import _ from 'lodash'
+import { withRouter } from 'react-router-dom'
 
 //$FlowFixMe
 import PostMessage from 'components/PostMessage'
@@ -15,6 +16,9 @@ const moment = require('moment')
 type Props = {
   type: string,
   name: string,
+  location: {
+    pathname: string
+  },
   messages: {}
 }
 
@@ -22,7 +26,7 @@ type State = {
   messages: Array<{}>
 }
 
-export default class Chat extends PureComponent<Props, State> {
+class Chat extends PureComponent<Props, State> {
   state = {
     messages: this.props.messages[this.props.type].filter(
       message => message.name === this.props.name
@@ -40,18 +44,38 @@ export default class Chat extends PureComponent<Props, State> {
   }
 
   render() {
-    const { type, name } = this.props
+    const { type, name, location } = this.props
     const { messages } = this.state
     
+    const channelType = location.pathname.split('/')[1]
+    const channelName = location.pathname.split('/')[2]
+
     if (!this.state.messages) return null
 
     return (
       <div className="chat">
-        <ChatTopbar />
+        <ChatTopbar channelType={channelType} channelName={channelName} />
         <div className="chat__container d-flex flex-column justify-content-end">
           <div className="chat__content-postmessage-wrapper">
             <div className="chat__content-container d-flex">
               <div className="chat__content p-4 w-100">
+                {
+                  channelType === 'channels' &&
+                    <div className="content__top">
+                      <span className="content__top-title font-weight-bold">
+                          {channelType === 'channels' ? '# ' : ''}
+                          {channelName}
+                      </span>
+                      <div className="content__description">
+                        <span className="description__mention">
+                          {`@damien`}
+                        </span>
+                        {` created this channel on `}
+                        {moment().format('LL')}.
+                        This is the very beginning of the <b> {channelType === 'channels' ? '# ' : ''}{channelName}</b> channel.
+                      </div>
+                    </div>
+                }
                 {
                   !_.isEmpty(messages) &&
                   <div className="content__chat-date">
@@ -82,3 +106,5 @@ export default class Chat extends PureComponent<Props, State> {
     )
   }
 }
+
+export default withRouter(Chat)

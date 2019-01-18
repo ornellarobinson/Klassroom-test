@@ -1,23 +1,19 @@
 // @flow
 
 import React, { PureComponent } from 'react'
-import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //$FlowFixMe
 import SearchBar from 'components/SearchBar'
 
 type Props = {
-  location: {
-    pathname: string
-  }
+  channelType: string,
+  channelName: string
 }
 
-class ChatTopbar extends PureComponent<Props> {
+export default class ChatTopbar extends PureComponent<Props> {
   render() {
-    const { pathname } = this.props.location
-    const channelType = pathname.split('/')[1]
-    const channelName = pathname.split('/')[2]
+    const { channelType, channelName } = this.props
 
     return (
       <div className="chat-topbar w-100">
@@ -51,5 +47,3 @@ class ChatTopbar extends PureComponent<Props> {
     )
   }
 }
-
-export default withRouter(ChatTopbar)
