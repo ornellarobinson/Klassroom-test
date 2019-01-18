@@ -54,8 +54,9 @@ export default class Chat extends PureComponent<Props> {
                   </div>
                 }
                 {
+                  messages &&
                   messages.map((message, index) =>
-                    <DisplayMessage key={index} message={message}/> 
+                    <DisplayMessage key={index} message={message} /> 
                   )
                 }
               </div>

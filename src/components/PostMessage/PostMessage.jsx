@@ -21,7 +21,6 @@ export default class PostMessage extends PureComponent<Props> {
   }
   
   onSubmit = () => {
-    console.log('submitted')
     const { postMessage, name, type } = this.props;
     const { newMessage } = this.state;
     

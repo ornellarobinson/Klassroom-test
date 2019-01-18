@@ -19,7 +19,7 @@ export default class SplashScreen extends PureComponent<Props> {
       <div className={classNames('splash-screen text-dark', {
         'splash-screen--active': show
       })}>
-        <div className="splash-screen__container m-auto d-flex flex-column justify-content-center align-items-center">
+        <div className="splash-screen__container m-auto d-flex flex-column justify-content-center align-items-center px-4">
           <img className="splash-screen__slack-logo" src={slackLogo} alt="slack-logo" />
           <img className="splash-screen__klassroom-logo" src={klassroomLogo} alt="klassroom-logo" />          
           <div className="splash-screen__button my-4 d-flex justify-content-end">
