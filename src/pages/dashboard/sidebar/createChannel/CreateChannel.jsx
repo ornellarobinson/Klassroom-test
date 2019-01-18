@@ -44,7 +44,7 @@ class CreateChannel extends PureComponent<Props> {
     const { username, name, privateChannel } = this.state;
     const newChatName = username.join();
 
-    if (name || 0 !== name.length) {
+    if (name && 0 !== name.length && name.trim() !== '') {
       postChannel('channel',
         {
           path: `/channels/${name}`,
@@ -62,7 +62,7 @@ class CreateChannel extends PureComponent<Props> {
     const { name } = this.state;
     const { pathname, channels } = this.props;
 
-    if (name !== '')
+    if (name !== '' )
       this.props.close(`/channels/${name}`)
     else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
       this.props.close('/')
