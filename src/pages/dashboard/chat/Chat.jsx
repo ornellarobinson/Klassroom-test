@@ -3,6 +3,7 @@
 import React, { PureComponent } from 'react'
 import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //$FlowFixMe
 import PostMessage from 'components/PostMessage'
@@ -61,13 +62,14 @@ class Chat extends PureComponent<Props, State> {
               <div className="chat__content p-4 w-100">
                 {
                   channelType === 'channels' &&
+                  <div className="content__top-container">
                     <div className="content__top">
                       <span className="content__top-title font-weight-bold">
                           {channelType === 'channels' ? '# ' : ''}
                           {channelName}
                       </span>
                       <div className="content__description">
-                        <span className="description__mention">
+                        <span className="chat__content-mention">
                           {`@damien`}
                         </span>
                         {` created this channel on `}
@@ -75,6 +77,15 @@ class Chat extends PureComponent<Props, State> {
                         This is the very beginning of the <b> {channelType === 'channels' ? '# ' : ''}{channelName}</b> channel.
                       </div>
                     </div>
+                    <div className="content__top-options d-inline-block text-info m-2">
+                      <FontAwesomeIcon icon="plus" size="xs" />
+                      <span className="ml-2">Add an app</span>
+                    </div>
+                    <div className="content__top-options d-inline-block text-info m-2">
+                      <FontAwesomeIcon icon="user" size="xs" />
+                      <span className="ml-2">Invite others to this channel</span>
+                    </div>
+                  </div>
                 }
                 {
                   !_.isEmpty(messages) &&
