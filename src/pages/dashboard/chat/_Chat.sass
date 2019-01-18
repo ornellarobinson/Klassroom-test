@@ -1,6 +1,9 @@
 .chat
   width: calc(100% - #{$sidebar-width})
 
+  @include media-breakpoint-down(xs)
+    width: calc(100% - #{$sidebar-width-mobile})
+    
   .chat__container
     height: calc(100vh - (#{$topbar-height})
 

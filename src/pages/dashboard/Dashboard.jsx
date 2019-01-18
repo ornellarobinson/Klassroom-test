@@ -60,7 +60,7 @@ class Dashboard extends PureComponent<Props> {
 
     return (
         <div className="container-fluid h-100">
-          <div className="row h-100">
+          <div className="dashboard row h-100">
             {
               !showSplashScreen ?
               <React.Fragment>

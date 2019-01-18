@@ -3,6 +3,7 @@
 import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter } from "react-router";
+import classNames from 'classnames';
 
 import UserStatus from 'components/UserStatus';
 import SearchBar from 'components/SearchBar';
@@ -30,12 +31,29 @@ type State = {
 }
 
 class Sidebar extends PureComponent<Props, State> {
+  state = {
+    open: false
+  }
+  
   render() {
     const { channels, updateDashboardState } = this.props;
-
+    const { open } = this.state;
+    console.log('open', open);
     return (
       <React.Fragment>
-        <div className="sidebar">
+        <div className={classNames('sidebar position-relative', {
+          'sidebar--open': open
+        })}>
+          <FontAwesomeIcon
+            icon="angle-right"
+            className={classNames('sidebar__arrow-icon', {
+              'sidebar__arrow-icon--open': open,
+              'sidebar__arrow-icon--close': !open
+              }
+            )}
+            size='2x'
+            onClick={() => this.setState({ open: !open })}
+          />
           <div className="sidebar__settings px-4 d-flex flex-column">
             <div className="settings__group position-relative pt-1">
               <span className="group__title font-weight-bold">Klassroom</span>
@@ -43,7 +61,7 @@ class Sidebar extends PureComponent<Props, State> {
               <FontAwesomeIcon icon="bell" className="group__notif" size="lg" />            
             </div>
             <div className="settings__user">
-              <UserStatus online={false} />
+              <UserStatus online={true} />
               <span className="user__name pl-2">damien</span>
             </div>
           </div>

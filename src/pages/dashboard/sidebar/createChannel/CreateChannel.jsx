@@ -107,7 +107,7 @@ class CreateChannel extends PureComponent<Props> {
               privateChannel &&
               <div className="mt-4">
                 <div className="d-flex">
-                  <div className="create-private-chat__users-selected p-2 w-100">
+                  <div className="create-channel__users-selected p-2 w-100">
                   {
                     username.map(username => 
                       <span key={username} className="badge badge-secondary p-3 m-1">{username}</span>)

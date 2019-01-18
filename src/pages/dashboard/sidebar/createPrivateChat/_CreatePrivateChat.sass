@@ -24,11 +24,10 @@
 
   .create-channel__search
     width: 600px
-    
-  .create-channel__search
-    width: 600px
+    @include media-breakpoint-down(sm)
+      width: 90%
 
-  .create-private-chat__users-selected
+  .create-channel__users-selected
     border: 1px solid $dark-grey
     border-radius: 6px
   
