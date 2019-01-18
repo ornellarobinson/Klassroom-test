@@ -5,9 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter } from "react-router"
 import classNames from 'classnames'
 
+//$FlowFixMe
 import UserStatus from 'components/UserStatus'
+//$FlowFixMe
 import SearchBar from 'components/SearchBar'
+//$FlowFixMe
 import SectionTitle from 'components/SectionTitle'
+//$FlowFixMe
 import NavigationItem from 'components/NavigationItem'
 
 type ChannelArray = {
@@ -18,8 +22,7 @@ type ChannelArray = {
 }
 
 type Props = {
-  location: *,
-  updateDashboardState: () => {},
+  updateDashboardState: string => {},
   channels: {
     channel: Array<ChannelArray>,
     private: Array<ChannelArray>
@@ -27,7 +30,7 @@ type Props = {
 }
 
 type State = {
-  newChat: boolean,
+  open: boolean,
 }
 
 class Sidebar extends PureComponent<Props, State> {

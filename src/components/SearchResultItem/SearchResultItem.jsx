@@ -2,9 +2,11 @@
 
 import React, { PureComponent } from 'react'
 
+//$FlowFixMe
 import UserStatus from 'components/UserStatus/UserStatus'
 
 type Props = {
+  selectItem: () => {},
   userInfos: {
     username: string,
     name: string,

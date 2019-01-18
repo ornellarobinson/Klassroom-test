@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-// import { getMessages } from 'redux-files/actions/messages.action'
 import { getChannels } from 'redux-files/actions/channels.action'
 import Sidebar from './Sidebar'
 

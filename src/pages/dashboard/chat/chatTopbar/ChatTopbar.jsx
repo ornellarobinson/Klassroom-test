@@ -4,9 +4,13 @@ import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+//$FlowFixMe
 import SearchBar from 'components/SearchBar'
-type Props = {
 
+type Props = {
+  location: {
+    pathname: string
+  }
 }
 
 class ChatTopbar extends PureComponent<Props> {

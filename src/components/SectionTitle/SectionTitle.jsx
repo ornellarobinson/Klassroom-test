@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
   name: string,
+  functionClickTrigger: () => {}
 }
 
 export default class SectionTitle extends PureComponent<Props> {

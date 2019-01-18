@@ -5,15 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
   type: string,
-  name: string
+  name: string,
+  postMessage: (string, {
+      name: string,
+      from: string,
+      at: number,
+      message: string
+  }) => {}
 }
 
-export default class PostMessage extends PureComponent<Props> {
+type State = {
+  newMessage: string
+}
+
+export default class PostMessage extends PureComponent<Props, State> {
   state = {
     newMessage: ''
   }
 
-  onEnterPress = (e) => {
+//$FlowFixMe
+  onEnterPress = e => {
+    //$FlowFixMe
     if(e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault()
       this.onSubmit()

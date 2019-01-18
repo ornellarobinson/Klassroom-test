@@ -6,11 +6,27 @@ import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+//$FlowFixMe
 import SearchResultItem from 'components/SearchResultItem/SearchResultItem'
 
+type ChannelArray = {
+  path: string,
+  icon: string,
+  online: boolean,
+  name: string,
+}
+
 type Props = {
+  postChannel: (string, {}) => {},
+  channels: {
+    channel: Array<ChannelArray>,
+    private: Array<ChannelArray>
+  },
+  location: {
+    pathname: string,
+  },
   show: boolean,
-  close: () => {},
+  close: string => {},
   users: {
     username: string,
     name: string,
@@ -18,7 +34,11 @@ type Props = {
   }
 }
 
-class CreatePrivateChat extends PureComponent<Props> {
+type State = {
+  username: Array<string>
+}
+
+class CreatePrivateChat extends PureComponent<Props, State> {
   state = {
     username: [],
   }
@@ -54,14 +74,14 @@ class CreatePrivateChat extends PureComponent<Props> {
 
   callPropsToCloseModal = () => {
     const { username } = this.state
-    const { pathname, channels } = this.props
+    const { location, channels } = this.props
 
     if (!_.isEmpty(username))
       this.props.close(`/private/${username.join()}`)
     else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
       this.props.close('/')
     else
-      this.props.close(pathname)
+      this.props.close(location.pathname)
     this.setState({ username: [] })
   }
 
@@ -84,6 +104,7 @@ class CreatePrivateChat extends PureComponent<Props> {
             <div className="d-flex">
               <div className="create-channel__users-selected p-3 w-100">
               {
+                //$FlowFixMe
                 username.map(username => 
                   <span key={username} className="badge badge-secondary p-3 m-1">{username}</span>)
               }
@@ -98,6 +119,7 @@ class CreatePrivateChat extends PureComponent<Props> {
             </div>
             <div className="create-private-chat__user-list">
               {
+                //$FlowFixMe
                 users.map(userInfos =>
                   <SearchResultItem key={userInfos.id} userInfos={userInfos} selectItem={() => this.selectResultItem(userInfos)}/>
                 )

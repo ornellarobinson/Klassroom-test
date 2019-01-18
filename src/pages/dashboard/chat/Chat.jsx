@@ -3,24 +3,33 @@
 import React, { PureComponent } from 'react'
 import _ from 'lodash'
 
+//$FlowFixMe
 import PostMessage from 'components/PostMessage'
+//$FlowFixMe
 import DisplayMessage from 'components/DisplayMessage'
+//$FlowFixMe
 import ChatTopbar from './chatTopbar'
 
 const moment = require('moment')
 
 type Props = {
-  type: string
+  type: string,
+  name: string,
+  messages: {}
 }
 
-export default class Chat extends PureComponent<Props> {
+type State = {
+  messages: Array<{}>
+}
+
+export default class Chat extends PureComponent<Props, State> {
   state = {
     messages: this.props.messages[this.props.type].filter(
       message => message.name === this.props.name
     ),
   }
   
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (prevProps !== this.props) {
       this.setState({
         messages:  this.props.messages[this.props.type].filter(
@@ -48,7 +57,10 @@ export default class Chat extends PureComponent<Props> {
                   <div className="content__chat-date">
                     <div className='hr'>
                       <span className='hr-title px-4 font-weight-bold'>
-                        {moment(messages[0].at).format('LL')}
+                        {
+                          //$FlowFixMe
+                          moment(messages[0].at).format('LL')
+                        }
                       </span>
                     </div>
                   </div>

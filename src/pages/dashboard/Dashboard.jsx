@@ -12,17 +12,30 @@ import CreateChannel from './sidebar/createChannel'
 import SplashScreen from './splashScreen'
 
 type Props = {
-  location: *,
+  history: *,
+  location: {
+    pathname: string
+  },
+  channels: {
+    private: Array<{}>,
+    channel: Array<{}>
+  }
 }
 
-class Dashboard extends PureComponent<Props> {
+type State = {
+  newPrivateChat: boolean,
+  newChannel: boolean,
+  showSplashScreen: boolean
+}
+
+class Dashboard extends PureComponent<Props, State> {
   state = {
     newPrivateChat: false,
     newChannel: false,
     showSplashScreen: (_.isEmpty(this.props.channels.private) && _.isEmpty(this.props.channels.channel)),
   }
 
-  closeCreateModal = (stateToChange, newPath) => {
+  closeCreateModal = (stateToChange: string, newPath: string) => {
     const { history, location } = this.props
 
     this.setState({ [stateToChange]: false, showSplashScreen: false})
@@ -30,18 +43,18 @@ class Dashboard extends PureComponent<Props> {
       history.push(newPath)
   }
 
-  openCreateModal = (stateToChange) => {
+  openCreateModal = (stateToChange: string) => {
     this.setState({ [stateToChange]: true })
   }
 
-  handleRedirection = (newPath, newTypeToCreate) => {
+  handleRedirection = (newPath: string, newTypeToCreate: string) => {
     if (newPath === '/')
       this.setState({ showSplashScreen: true })
     else
       this.closeCreateModal(newTypeToCreate, newPath)
   }
 
-  updateState = newType => {
+  updateState = (newType: string) => {
     const stateCopy = _.cloneDeep(this.state)
 
     Object.keys(stateCopy).forEach(function(key){

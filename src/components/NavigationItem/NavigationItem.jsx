@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
 
+//$FlowFixMe
 import UserStatus from 'components/UserStatus'
 
 type Props = {

@@ -3,12 +3,14 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 
+//$FlowFixMe
 import slackLogo from 'ressources/slack-logo.png'
+//$FlowFixMe
 import klassroomLogo from 'ressources/klassroom-logo.svg'
 
 type Props = {
   show: boolean,
-  onButtonClicked: () => {},
+  onButtonClicked: string => {},
 }
 
 export default class SplashScreen extends PureComponent<Props> {
