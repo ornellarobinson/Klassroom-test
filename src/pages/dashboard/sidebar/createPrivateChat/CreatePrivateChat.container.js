@@ -6,6 +6,7 @@ import CreatePrivateChat from './CreatePrivateChat'
 const mapStateToProps = state => {
   return {
     users: state.userProfile,
+    channels: state.channels
   }
 }
 

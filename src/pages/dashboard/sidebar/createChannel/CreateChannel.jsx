@@ -2,13 +2,19 @@
 
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
+import _ from 'lodash'
 import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ToggleButton from 'react-toggle-button'
 
 import SearchResultItem from 'components/SearchResultItem/SearchResultItem';
 
-class CreateChannel extends PureComponent {
+type Props = {
+  show: boolean,
+  close: () => {},
+}
+
+class CreateChannel extends PureComponent<Props> {
   state = {
     title: '',
     privateChannel: false,
@@ -54,8 +60,14 @@ class CreateChannel extends PureComponent {
 
   callPropsToCloseModal = () => {
     const { name } = this.state;
+    const { pathname, channels } = this.props;
 
-    this.props.close(`/channels/${name}`);
+    if (name !== '')
+      this.props.close(`/channels/${name}`)
+    else if ((_.isEmpty(channels.private) && _.isEmpty(channels.channel)))
+      this.props.close('/')
+    else
+      this.props.close(pathname)
     this.setState({ username: [], title: '', privateChannel: false, name: '' })
   }
 
