@@ -1,11 +1,27 @@
 .chat-topbar
+  display: flex
   height: 61px
   border-bottom: 1px solid lightgrey
+  justify-content: space-between
+
+  @include media-breakpoint-down(xs)
+    flex-direction: column
+    justify-content: center
 
   .right__channel-infos
     font-size: $font-size-small
 
+  .topbar__right
+    @include media-breakpoint-down(xs)
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+
   .topbar__left
+    display: flex
+    align-items: center
+    @include media-breakpoint-down(xs)
+      display: none
 
     svg, div
       margin: 0 5px
@@ -15,5 +31,11 @@
       
     .topbar__searchbar
       border: 1px solid $dark-grey
-      width: 180px
-      height: 34px
+      width: 160px
+      height: 30px
+
+      input
+        font-size: $font-size-small
+
+      @media (max-width: 680px)
+        width: 84px

@@ -2,8 +2,43 @@
 	width: $sidebar-width
 	background-color: $sidebar-background-purple
 	color: $sidebar-light-purple
-	
+	overflow: hidden
+	transition: width 0.5s ease-in-out 
+	min-height: 100%
+
+	@include media-breakpoint-down(xs)
+		width: $sidebar-width-mobile
+		background-color: $sidebar-background-purple
+
+		.sidebar__arrow-icon
+			display: inherit
+
+		& > div
+			opacity: 0
+
+	.sidebar__arrow-icon
+		display: none
+		transition: transform 1s
+
+		@include media-breakpoint-down(xs)
+			display: inherit
+
+	.sidebar__arrow-icon--close
+		cursor: pointer
+		margin-top: 10px
+		margin-left: auto
+		margin-right: auto
+		transform: rotate(0deg)
+
+	.sidebar__arrow-icon--open
+		position: absolute
+		top: 10px
+		right: 20px
+		z-index: 100
+		transform: rotate(180deg)
+
 	.sidebar__settings
+		min-width: $sidebar-width
 		height: $topbar-height
 
 		&:hover
@@ -33,6 +68,7 @@
 				font-size: $font-size-small
 
 	.sidebar__nav
+		min-width: $sidebar-width
 		font-size: $font-size-small
 		height: calc(100% - #{$topbar-height})
 		overflow: scroll
@@ -58,3 +94,10 @@
 				
 			.search-bar__input, .search-bar__input::placeholder
 				color: $sidebar-light-purple
+
+.sidebar--open
+	width: 100vw
+	padding-top: 4rem
+
+	& > div
+		opacity: 1

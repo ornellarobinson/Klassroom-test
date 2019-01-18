@@ -21,7 +21,8 @@ import {
   faPhone,
   faInfoCircle,
   faCog,
-  faEllipsisV
+  faEllipsisV,
+  faAngleRight
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -46,5 +47,6 @@ library.add(
   faPhone,
   faInfoCircle,
   faCog,
-  faEllipsisV
+  faEllipsisV,
+  faAngleRight
 );
