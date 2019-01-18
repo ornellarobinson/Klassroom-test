@@ -38,7 +38,7 @@ class Sidebar extends PureComponent<Props, State> {
   render() {
     const { channels, updateDashboardState } = this.props;
     const { open } = this.state;
-    console.log('open', open);
+    
     return (
       <React.Fragment>
         <div className={classNames('sidebar position-relative', {
